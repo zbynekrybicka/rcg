@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "RCG\\": "app/"
+    }
+  },
+  "require": {
+    "latte/latte": "^2.10"
+  }
+}

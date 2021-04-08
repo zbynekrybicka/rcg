@@ -1,0 +1,24 @@
+<?php
+namespace App\Collector;
+
+class {$className} extends Collector
+{
+
+{foreach $methods as $method}
+    /**
+     *{ifset $method->noParam}{else}
+
+     * @param ${$method->name}{/ifset}
+     * @return {$method->return}
+     */
+    public function {$method->name}({ifset $method->noParam}{else}${$method->name}{/ifset}): {$method->return}
+    {
+{foreach $method->data as $target => $source}
+        self::${$target|noescape} = {$source|noescape};
+{/foreach}
+        return new {$method->return};
+    }
+
+
+{/foreach}
+}

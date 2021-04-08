@@ -1,0 +1,30 @@
+<?php
+namespace App\Collector;
+
+use Latte\Engine;
+
+abstract class Collector
+{
+    protected static $export = (object) [];
+
+{foreach $variables as $variable}
+    protected static ${$variable};
+{/foreach}
+
+    public static function export(string $dist)
+    {
+        $latte = new Engine();
+        $latte->setTempDirectory(__DIR__ . '/../temp');
+        foreach ((array) self::$export as $template => $data) {
+            if (is_array($data)) {
+                foreach ($data as $item) {
+                    file_put_contents($dist . '/' . $item->filename, $latte->renderToString(__DIR__ . '/../templates/' . $template . '.latte', $item));
+                }
+            } else {
+                file_put_contents($dist . '/' . $data->filename, $latte->renderToString(__DIR__ . '/../templates/' . $template . '.latte', $data));
+            }
+        }
+    }
+
+
+}
