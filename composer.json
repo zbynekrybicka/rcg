@@ -1,4 +1,6 @@
 {
+  "name": "zbynekrybicka/rcg",
+  "description": "Collector classes generator",
   "autoload": {
     "psr-4": {
       "RCG\\": "app/"
