@@ -1,3 +1,6 @@
 vendor/*
 dist/*
 test.php
+app/temp/*
+.idea/*
+source/*
